@@ -7,57 +7,65 @@ const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 
 
-
 // ----------------------------------------------------
 // FETCH FUNCTION
 // ----------------------------------------------------
-fetch(url)
-    .then(response => response.json())
-    .then(data => generateHTML(data))
 
-
+function fetchData(url) {
+    return fetch(url)
+        .then(checkStatus)
+        .then(response => response.json())
+        .catch(error => console.log('Looks like there was an error', error))
+}; 
 
 
 // ----------------------------------------------------
 // FUNCTIONS
 // ----------------------------------------------------
+
+function checkStatus(response) {
+    if (response.ok) {
+        return Promise.resolve(response);
+    } else {
+        return Promise.reject(new Error(response.statusText));
+    }
+} 
+
 function generateHTML(data) {
     let html;
-    for (let i = 0; i < data.results.length; i++) {
-        html = `
+
+    // Loop and create main HTML content
+    data.map(employee => {
+
+        // Declaring varibales 
+        const firstName = employee.name.first;
+        const lastName = employee.name.last;
+        const img = employee.picture.large;
+        const email = employee.email;
+        const locationStreet = employee.location.street;
+        const locationCity = employee.location.city;
+        const locationState = employee.location.state;
+        const locationPostcode = employee.location.postcode;
+        const phone = employee.cell;
+
+        // Adds the HTML to the page
+        container.innerHTML += `
             <div class="employee-container">
                 <div class="employee-image">
-                    <img src="${data.results[i].picture.large}">
+                    <img src="${img}">
                 </div>
                 <div class="employee-text">
-                    <p>${data.results[i].name.first} ${data.results[i].name.last}</p>
-                    <p>${data.results[i].email}</p>
-                    <p>${data.results[i].location.city}</p>
+                    <p>${firstName} ${lastName}</p>
+                    <p>${email}</p>
+                    <p>${locationCity}</p>
                 <div>    
             </div> 
         `;
-        container.innerHTML += html;
-    }
+    });
 };
 
-
-
 // ----------------------------------------------------
-// Event Listeners
+// Initialise the page
 // ----------------------------------------------------
-
-// Listens for a click on the page container
-container.addEventListener('click', event => {
-    if (event.target.className === 'employee-container') {
-        if (modal.style.display !== 'block') {
-            modal.style.display = "block";
-        }
-    }
-});
-
-// Event listen for the close button on modal window
-span.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-
+fetchData(url)
+    .then(response => generateHTML(response.results));
