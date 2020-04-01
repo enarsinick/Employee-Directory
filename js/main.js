@@ -2,7 +2,7 @@
 // DECLARING VARIABLES
 // ----------------------------------------------------
 const url = 'https://randomuser.me/api/?results=12&inc=name,picture,email,location,cell,dob&nat=gb';
-const container = document.getElementById('page-container');
+const container = document.getElementById('content-container');
 
 
 // ----------------------------------------------------
