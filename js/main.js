@@ -5,6 +5,7 @@ const url = 'https://randomuser.me/api/?results=12&inc=name,picture,email,locati
 const container = document.getElementById('content-container');
 
 
+
 // ----------------------------------------------------
 // FETCH FUNCTION
 // ----------------------------------------------------
@@ -21,17 +22,27 @@ fetch(url)
 function generateHTML(data) {
     let html;
     for (let i = 0; i < data.results.length; i++) {
-        console.log(data.results[i]);
         html = `
             <div class="employee-container">
-                <img src="${data.results[i].picture.large}">
-                <div>
+                <div class="employee-image">
+                    <img src="${data.results[i].picture.large}">
+                </div>
+                <div class="employee-text">
                     <p>${data.results[i].name.first} ${data.results[i].name.last}</p>
                     <p>${data.results[i].email}</p>
                     <p>${data.results[i].location.city}</p>
-                <div>
-            </div>
+                <div>    
+            </div> 
         `;
         container.innerHTML += html;
     }
 };
+
+
+
+// ----------------------------------------------------
+// Event Listeners
+// ----------------------------------------------------
+
+
+
