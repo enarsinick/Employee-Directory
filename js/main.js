@@ -3,6 +3,8 @@
 // ----------------------------------------------------
 const url = 'https://randomuser.me/api/?results=12&inc=name,picture,email,location,cell,dob&nat=gb';
 const container = document.getElementById('content-container');
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
 
 
 
@@ -44,5 +46,18 @@ function generateHTML(data) {
 // Event Listeners
 // ----------------------------------------------------
 
+// Listens for a click on the page container
+container.addEventListener('click', event => {
+    if (event.target.className === 'employee-container') {
+        if (modal.style.display !== 'block') {
+            modal.style.display = "block";
+        }
+    }
+});
+
+// Event listen for the close button on modal window
+span.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
 
 
