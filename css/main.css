@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -10,9 +10,65 @@ body {
     width: 100%;
 }
 
+header {
+    background-color: #EE6D52;
+    height: 35vh;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.header-container {
+    max-width: 1300px;
+    height: 100%;
+    margin: 0 auto;
+
+}
+
+.logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.portfolio-button {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 13px 24px;
+    background-color: #108974;
+    border-radius: 40px;
+}
+
+.search-wrapper {
+    width: 40%;
+    height: calc(100% - 76px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 25px;
+    border-radius: 50px;
+    border: none;
+}
+
 #content-container {
     max-width: 1300px;
     margin: 0 auto;
+    padding-bottom: 50px;
     display: grid;
     grid-gap: 40px;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr))

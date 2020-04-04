@@ -101,10 +101,6 @@ container.addEventListener('click', event => {
         const modalWindow = document.getElementsByClassName('modal-' + targetIndex)[0];
         modalWindow.style.display = 'block';
         overlay.style.display = 'flex';
-
-
-        console.log(modalWindow);
-
     }
 });
 
