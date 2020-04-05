@@ -201,6 +201,8 @@ input:focus {
  }
 
  .footer-container {
+     max-width: 1300px;
+     margin: 0 auto;
      text-align: center;
      padding: 60px 20px 20px;
  }
@@ -237,13 +239,13 @@ input:focus {
 
 .footer-nav a {
     display: block;
-    color: #C0C0C0;
+    color: #E0E0E0;
     text-decoration: none;
     padding: 10px 0;
 }
 
 .copyright {
-    color: #C0C0C0;
+    color: #E0E0E0;
     font-size: 14px;
     margin-top: 40px;
 
@@ -315,7 +317,51 @@ input:focus {
     #content-container {
         grid-gap: 50px;
     }
+   
+    .footer-container {
+        padding: 60px 50px 30px;
+    }
 
+    .footer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+    }
+   
+    .footer-logo {
+        padding-bottom: 5px;
+    }
+
+    .footer-logo-text-area {
+        max-width: 300px;
+    }
+   
+    .footer-logo-text {
+        margin-bottom: 0;
+    }
+
+    .footer-bottom {
+        margin-top: 100px;
+        display: flex;
+        justify-content: space-between;
+    }
+   
+   .footer-nav {
+       display: flex;
+       flex-direction: row;
+       margin-top: 0;
+   }
+   
+   .footer-nav a {
+       padding: 0;
+       margin-right: 30px;
+   }
+   
+   .copyright {
+       margin-top: 0;
+   }
+   
   }
 
   @media (min-width: 1280px) {
@@ -384,6 +430,10 @@ input:focus {
         margin-right: 30px;
         border-radius: 10px;
         width: 40%;
+    }
+
+    .footer-container {
+        padding: 70px 0 50px;
     }
 
   }

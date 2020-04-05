@@ -6,6 +6,7 @@ const container = document.getElementById('content-container');
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 const modalContainer = document.getElementById('modal-wrapper');
+const modalWrapper = document.getElementById('modal-wrapper').childNodes;
 const overlay = document.getElementById('overlay');
 
 // ----------------------------------------------------
@@ -45,12 +46,12 @@ function generateHTML(data) {
         // Adds the HTML to the page
         container.innerHTML += `
             <div class="employee-container" data-index="${index}">
-                <div class="employee-image">
-                    <img src="${img}">
+                <div class="employee-image" data-index="${index}">
+                    <img class="employee-image-inner" src="${img}" data-index="${index}">
                 </div>
-                <div class="employee-text">
-                    <p>${firstName} ${lastName}</p>
-                    <p class="employee-location">${locationCity}</p>
+                <div class="employee-text" data-index="${index}">
+                    <p class="employee-name" data-index="${index}">${firstName} ${lastName}</p>
+                    <p class="employee-location" data-index="${index}">${locationCity}</p>
                 </div>    
             </div> 
         `;
@@ -93,14 +94,38 @@ function generateHTML(data) {
 // Event listeners
 // ----------------------------------------------------
 
-container.addEventListener('click', event => {
-    if (event.target.className === 'employee-container') {
-        const targetIndex = event.target.getAttribute('data-index');
-        const modalWindow = document.getElementsByClassName('modal-' + targetIndex)[0];
+// Listen for click on employee container and displays corresponding modal window
+document.addEventListener('click', event => {
+    const target = event.target.className;
+    const targetIndex = event.target.getAttribute('data-index');
+    const modalWindow = document.getElementsByClassName('modal-' + targetIndex)[0];
+    if (
+        target === 'employee-container' || 
+        target === 'employyee-image' ||
+        target === 'employee-image-inner' ||
+        target === 'employee-text' ||
+        target === 'employee-name' ||
+        target === 'employee-location'
+        ) {
         modalWindow.style.display = 'block';
         overlay.style.display = 'flex';
+    } 
+});
+
+// Listening for clicks on black overlay of popup and closes modal window
+overlay.addEventListener('click', target => {
+    if (event.target.className === 'overlay') {
+        overlay.style.display = 'none';
+        for (let i = 0; i < modalWrapper.length; i++) {
+            if (modalWrapper[i].nodeName == 'DIV') {
+                if (modalWrapper[i].style.display == 'block') {
+                    modalWrapper[i].style.display = 'none';
+                }
+            }
+        }
     }
 });
+
 
 // ----------------------------------------------------
 // Initialise the page
