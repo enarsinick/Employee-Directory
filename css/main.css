@@ -10,12 +10,16 @@ body {
     width: 100%;
 }
 
+a {
+    color: white;
+}
+
 header {
     background-color: #EE6D52;
-    height: 35vh;
-    margin-bottom: 50px;
+    height: 70vh;
+    margin-bottom: 40px;
     width: 100%;
-    padding: 0 40px;
+    padding: 0 25px;
 }
 
 .header-container {
@@ -29,66 +33,84 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 30px;
+    padding-top: 25px;
 }
 
 .logo {
     color: white;
-    font-size: 22px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .portfolio-button {
     text-decoration: none;
-    color: white;
+    color: #EE6D52;
     font-size: 14px;
-    font-weight: 300;
-    padding: 13px 24px;
-    background-color: #108974;
+    font-weight: 400;
+    padding: 10px 15px;
+    background-color: white;
     border-radius: 40px;
 }
 
-.search-wrapper {
-    width: 40%;
-    height: calc(100% - 76px);
+.intro-wrapper {
+    width: 100%;
+    text-align: center;
+    height: calc(100% - 65px);
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.intro-wrapper h3 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.intro-wrapper p {
+    color: white;
+    margin-bottom: 35px;
 }
 
 input {
     font-size: 16px;
     width: 100%;
-    padding: 15px 25px;
+    max-width: 300px;
+    padding: 13px 20px;
     border-radius: 50px;
-    border: none;
+    border: 1.5px solid white;
+    background-color: #EE6D52;
+    color: white;
+}
+
+input::placeholder {
+    color: white;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
 }
 
 #content-container {
     max-width: 1300px;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
     display: grid;
-    grid-gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr))
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr))
 }
 
 .page-container {
-    padding: 0 40px;
+    padding: 0 25px;
     margin: 0 auto;
 }
 
-.page-container h3 {
-    font-size: 40px;
-    font-weight: 300;
-    text-align: center;
-    margin:50px 0;
-}
-
 .employee-container {
-    padding: 30px 20px;
-    border: 1px solid lightgrey;
+    padding: 20px;
+    background-color: #FBFBFB;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -96,29 +118,29 @@ input {
     cursor: pointer;
 }
 
-.employee-container:hover {
-    background-color: #F8F8F8;
-}
 
 .employee-container .employee-image {
-    width: 110px;
-    padding-right: 20px;
+    margin-right: 15px;
+    border-radius: 10px;
+    width: 40%;
 }
 
 .employee-container img {
-    border-radius: 100%;
+    border-radius: 10px;
     width: 100%;
+}
+
+.employee-text .employee-location {
+    color: #C0C0C0;
 }
 
 .employee-container div p:first-child {
     font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 5px;
+    font-size: 16px;
 }
 
 .overlay {
     display: none;
-    /* display: flex; */
     align-items: center;
     justify-content: center;
     position: fixed; /* Sit on top of the page content */
@@ -173,3 +195,195 @@ input {
      margin-bottom: 20px;
      margin-top: 10px;
  }
+
+ footer {
+     background-color: #F9F9F9;
+ }
+
+ .footer-container {
+     text-align: center;
+     padding: 60px 20px 20px;
+ }
+
+ .footer-logo {
+     color: #F97E47;
+     font-size: 18px;
+     font-weight: 700;
+     text-transform: uppercase;
+     padding-bottom: 10px;
+ }
+
+ .footer-logo-text {
+     color: #C0C0C0;
+     margin-bottom: 40px;
+ }
+
+ .footer-button {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 15px 25px;
+    background-color: #D1D0D0;
+    border-radius: 40px;
+}
+
+.footer-nav {
+    color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.footer-nav a {
+    display: block;
+    color: #C0C0C0;
+    text-decoration: none;
+    padding: 10px 0;
+}
+
+.copyright {
+    color: #C0C0C0;
+    font-size: 14px;
+    margin-top: 40px;
+
+}
+
+
+ @media (min-width: 425px) {
+
+    header {
+        height: 60vh;
+        padding: 0 35px;
+    }
+
+    .logo-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+
+    .employee-container {
+        padding: 30px;
+    }
+
+    .employee-text .employee-location {
+        font-size: 18px;
+    }
+    
+    .employee-container div p:first-child {
+        font-size: 20px;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    header {
+        height: 50vh;
+        padding: 0 50px;
+        margin-bottom: 50px;
+    }
+
+    .logo-bar {
+        padding-top: 40px;
+    }
+
+    .intro-wrapper {
+        width: 80%;
+        height: calc(100% - 80px);
+    }
+    
+    .intro-wrapper h3 {
+        font-size: 25px;
+    }
+    
+    .intro-wrapper p {
+        margin-bottom: 60px;
+    }
+    
+    input {
+        max-width: 450px;
+        padding: 15px 25px;
+    }
+
+    .page-container {
+        padding: 0 50px;
+        margin: 0 auto;
+    }
+
+    #content-container {
+        grid-gap: 50px;
+    }
+
+  }
+
+  @media (min-width: 1280px) {
+
+    header {
+        height: 60vh;
+    }
+
+    .intro-wrapper {
+        width: 100%;
+        height: calc(100% - 90px);
+    }
+    
+    .intro-wrapper h3 {
+        font-size: 35px;
+    }
+    
+    .intro-wrapper p {
+        margin-bottom: 40px;
+        max-width: 600px;
+    }
+    
+    input {
+        max-width: 550px;
+        padding: 15px 25px;
+    }
+
+    .portfolio-button {
+        font-size: 16px;
+        padding: 13px 25px;;
+    }
+
+    
+    #content-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding-bottom: 40px;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    }
+
+  }
+
+  @media (min-width: 1300px) {
+
+    header {
+        height: 50vh;
+        margin-bottom: 60px;
+    }
+    
+    .logo {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    #content-container {
+        max-width: 1300px;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+    }
+    
+    .employee-container .employee-image {
+        margin-right: 30px;
+        border-radius: 10px;
+        width: 40%;
+    }
+
+  }

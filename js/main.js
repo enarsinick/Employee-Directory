@@ -40,7 +40,6 @@ function generateHTML(data) {
         const firstName = employee.name.first;
         const lastName = employee.name.last;
         const img = employee.picture.large;
-        const email = employee.email;
         const locationCity = employee.location.city;
 
         // Adds the HTML to the page
@@ -51,8 +50,7 @@ function generateHTML(data) {
                 </div>
                 <div class="employee-text">
                     <p>${firstName} ${lastName}</p>
-                    <p>${email}</p>
-                    <p>${locationCity}</p>
+                    <p class="employee-location">${locationCity}</p>
                 </div>    
             </div> 
         `;
@@ -75,7 +73,7 @@ function generateHTML(data) {
         const birthday = employee.dob.date;
 
         modalContainer.innerHTML += `
-            <div id="modal-window" class="modal-window modal-${index}" data-index="${index}">
+            <div id="modal-window" class="modal-window modal-${index}">
                 <div class="modal-content">
                     <img class="modal-image" src="${img}">
                     <h3>${firstName} ${lastName}</h3>
