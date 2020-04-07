@@ -8,6 +8,8 @@ const span = document.getElementsByClassName("close")[0];
 const modalContainer = document.getElementById('modal-wrapper');
 const modalWrapper = document.getElementById('modal-wrapper').childNodes;
 const overlay = document.getElementById('overlay');
+const searchBar = document.getElementById('search');
+let fetchResponseData = [];
 
 // ----------------------------------------------------
 // FETCH FUNCTION
@@ -33,15 +35,16 @@ function checkStatus(response) {
 } 
 
 function generateHTML(data) {
+    fetchResponseData = data;
     
     // Loop and create main HTML content
-    data.map((employee, index) => {
+    data.map((fetchResponseData, index) => {
 
         // Declaring varibales 
-        const firstName = employee.name.first;
-        const lastName = employee.name.last;
-        const img = employee.picture.large;
-        const locationCity = employee.location.city;
+        const firstName = fetchResponseData.name.first;
+        const lastName = fetchResponseData.name.last;
+        const img = fetchResponseData.picture.large;
+        const locationCity = fetchResponseData.location.city;
 
         // Adds the HTML to the page
         container.innerHTML += `
@@ -58,32 +61,30 @@ function generateHTML(data) {
     });
 
     // Loop through and create modal content
-    data.map((employee, index) => {
+    data.map((fetchResponseData, index) => {
 
         // Declaring varibales 
-        const firstName = employee.name.first;
-        const lastName = employee.name.last;
-        const img = employee.picture.large;
-        const email = employee.email;
-        const locationStreetNumber = employee.location.street.number;
-        const locationStreetName = employee.location.street.name;
-        const locationCity = employee.location.city;
-        const locationState = employee.location.state;
-        const locationPostcode = employee.location.postcode;
-        const phone = employee.cell;
-        const birthday = employee.dob.date;
+        const firstName = fetchResponseData.name.first;
+        const lastName = fetchResponseData.name.last;
+        const img = fetchResponseData.picture.large;
+        const email = fetchResponseData.email;
+        const locationStreetNumber = fetchResponseData.location.street.number;
+        const locationStreetName = fetchResponseData.location.street.name;
+        const locationCity = fetchResponseData.location.city;
+        const locationState = fetchResponseData.location.state;
+        const locationPostcode = fetchResponseData.location.postcode;
+        const phone = fetchResponseData.cell;
 
         modalContainer.innerHTML += `
             <div id="modal-window" class="modal-window modal-${index}">
                 <div class="modal-content">
+                    <img class="exit-button" id="exit-button" src="assets/exitbutton.svg">
                     <img class="modal-image" src="${img}">
                     <h3>${firstName} ${lastName}</h3>
-                    <p>${email}</p>
-                    <p>${locationState}</p>
                     <span class="modal-line"></span>
+                    <p>${email}</p>
                     <p>${phone}</p>
                     <p>${locationStreetNumber} ${locationStreetName}, ${locationCity}, ${locationState}, ${locationPostcode}</p>
-                    <p>Birthday: ${birthday}</p> 
                 </div>
             </div>
         `;
@@ -113,8 +114,8 @@ document.addEventListener('click', event => {
 });
 
 // Listening for clicks on black overlay of popup and closes modal window
-overlay.addEventListener('click', target => {
-    if (event.target.className === 'overlay') {
+overlay.addEventListener('click', event => {
+    if (event.target.className === 'overlay' || event.target.className === 'exit-button') {
         overlay.style.display = 'none';
         for (let i = 0; i < modalWrapper.length; i++) {
             if (modalWrapper[i].nodeName == 'DIV') {
@@ -125,6 +126,26 @@ overlay.addEventListener('click', target => {
         }
     }
 });
+
+
+//search functionality
+searchBar.addEventListener('keyup', () => {
+    let filter = searchBar.value.toLowerCase();
+    let employeeCards = document.querySelectorAll('.employee-container');
+    let employeeName = document.querySelectorAll('.employee-name');
+    let employeeLocation = document.querySelectorAll('.employee-location');
+    
+    for (i = 0; i < employeeCards.length; i++) {
+        let name = employeeName[i].textContent;        
+        let location = employeeLocation[i].textContent;
+        
+        if (name.toLowerCase().indexOf(filter) > -1 || location.toLowerCase().indexOf(filter) > -1) {
+            employeeCards[i].style.display = '';
+        } else {
+            employeeCards[i].style.display = 'none';
+        }
+    }
+  });
 
 
 // ----------------------------------------------------
