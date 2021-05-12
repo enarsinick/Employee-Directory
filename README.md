@@ -2,7 +2,9 @@
 
 A website that retrives data from a third-party API called Random User Generator. This data is then displayed onto the page using vanilla JavaScript, with the ability to also search through each of the users on the frontend.
 
-![](assets/employee-1.jpg)
+![](assets/employee-1.png)
+
+![](assets/employee-2.png)
 
 ## Getting Started
 
